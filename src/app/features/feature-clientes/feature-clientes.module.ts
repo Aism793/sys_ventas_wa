@@ -18,6 +18,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from '@app/core/core.module';
 import { FormClienteComponent } from './pages/clientes/form-cliente/form-cliente.component';
+import { ListClienteComponent } from './pages/clientes/list-cliente/list-cliente.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     ClientesComponent,
     FormClienteComponent,
+    ListClienteComponent,
   ],
   imports: [
     CommonModule,

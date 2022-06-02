@@ -11,6 +11,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductosComponent } from '@app/features/feature-productos/pages/productos/productos.component';
 import { FacturacionComponent } from '@app/features/feature-facturacion/pages/facturacion/facturacion.component';
 import { FormClienteComponent } from '@app/features/feature-clientes/pages/clientes/form-cliente/form-cliente.component';
+import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
 
 const routes: Routes = [
   { 
@@ -37,6 +38,7 @@ const routes: Routes = [
         children: [
           { path: 'clientes', component: ClientesComponent, },
           { path: 'crearCliente', component: FormClienteComponent, },
+          { path: 'listarClientes', component: ListClienteComponent, },
         ]
       },
       {

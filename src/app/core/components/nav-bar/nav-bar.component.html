@@ -75,6 +75,13 @@
         <i id="icon" class="material-icons">settings</i>
         <span id="text" class="text"> Crear Cliente </span>
       </a>
+      <a
+      mat-list-item
+      [routerLink]="'/a/clientes/listarClientes'"
+      [routerLinkActive]="['active']">
+      <i id="icon" class="material-icons">settings</i>
+      <span id="text" class="text"> Listar Cliente </span>
+      </a> 
       </div>
 
       <mat-list-item (click)="showSubmenuPurchase = !showSubmenuPurchase">

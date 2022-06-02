@@ -23,6 +23,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { FeatureProductosModule } from './features/feature-productos/feature-productos.module';
 
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
