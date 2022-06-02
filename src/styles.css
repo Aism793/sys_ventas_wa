@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Raleway, sans-serif; }
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+img, svg {
+    vertical-align: initial;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: gray !important;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: gray !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: gray !important;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: gray !important;
+}
+
+.tooltip-custom {
+  margin: 0.3em !important;
+}
+
+table {
+  width: 100%;
+}
