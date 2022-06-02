@@ -17,6 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from '@app/core/core.module';
+import { FormClienteComponent } from './pages/clientes/form-cliente/form-cliente.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -25,7 +26,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    ClientesComponent
+    ClientesComponent,
+    FormClienteComponent,
   ],
   imports: [
     CommonModule,

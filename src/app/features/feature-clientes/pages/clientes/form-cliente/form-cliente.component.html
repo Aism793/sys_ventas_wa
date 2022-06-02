@@ -1,0 +1,63 @@
+<div class="container">
+    <h1 class="example-form">Formulario del Cliente </h1>
+    <form class="example-form" [formGroup]="formGroup" (ngSubmit)="save()">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Cedula</mat-label>
+        <input matInput  formControlName="cedula" #message maxlength="10" placeholder="1065">
+        <mat-hint align="start"><strong>Por favor dijite la cedula del Cliente</strong> </mat-hint>
+        <mat-hint align="end">{{cedula.value.length}} / 10</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Primer Nombre</mat-label>
+        <input matInput formControlName="primerNombre" #message maxlength="20" placeholder="Micheel">
+        <mat-hint align="start"><strong>Por favor dijite el primer nombre del cliente</strong> </mat-hint>
+        <mat-hint align="end">{{primerNombre.value.length}} / 20</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Segundo Nombre</mat-label>
+        <input matInput formControlName="segundoNombre" #message maxlength="20" placeholder="Tatiana">
+        <mat-hint align="start"><strong>Por favor dijite el segundo nombre del cliente</strong> </mat-hint>
+        <mat-hint align="end">{{segundoNombre.value.length}} / 20</mat-hint>
+       </mat-form-field>
+
+       <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Primer Apellido</mat-label>
+        <input matInput formControlName="primerApellido" #message maxlength="20" placeholder="Rojas">
+        <mat-hint align="start"><strong>Por favor dijite el primer Apellido del cliente</strong> </mat-hint>
+        <mat-hint align="end">{{primerApellido.value.length}} / 20</mat-hint>
+       </mat-form-field>
+
+       <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Segundo Apellido</mat-label>
+        <input matInput formControlName="segundoApellido" #message maxlength="20" placeholder="Hoyos">
+        <mat-hint align="start"><strong>Por favor dijite el segundo Apellido del cliente</strong> </mat-hint>
+        <mat-hint align="end">{{segundoApellido.value.length}} / 20</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" #message maxlength="30" placeholder="miche@gmail.com">
+        <mat-hint align="start"><strong>Por favor dijite el correo del cliente</strong> </mat-hint>
+        <mat-hint align="end">{{correo.value.length}} / 30</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telefono" #message maxlength="10" placeholder="311319999">
+        <mat-hint align="start"><strong>Por favor dijite el telefono del cliente</strong> </mat-hint>
+        <mat-hint align="end">{{telefono.value.length}} / 10</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Direccion</mat-label>
+        <input matInput formControlName="direccion" #message maxlength="30" placeholder="mz 20">
+        <mat-hint align="start"><strong>Por favor dijite la direccion del cliente</strong> </mat-hint> 
+        <mat-hint align="end">{{direccion.value.length}} / 20</mat-hint>
+      </mat-form-field>
+
+
+      <div class="example-button-row">
+        <button type="submit" mat-fab color="accent">Aceptar</button>
+      </div>
+    </form>
+  </div>
