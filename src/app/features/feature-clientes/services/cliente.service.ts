@@ -15,7 +15,20 @@ query{
   }
 }
 `;
-
+const Cliente_ById = gql`
+query clienteById($id: Int!){
+  clienteById(id: $id) {
+     id,
+     cedula,
+     primerNombre,
+     primerApellido,
+     correo,
+     telefono,
+     direccion,
+     estado,
+  }
+}
+`;
 const Post_Cliente = gql`
 mutation createCliente($clienteInput:ClienteInput! ) {
   createCliente(cliente:$clienteInput)
@@ -36,15 +49,35 @@ mutation disableCliente($cedula:String! ) {
   }
 }
 `;
+const Update_Cliente = gql`
+mutation updateCliente($cedula:String!,$clienteInput:ClienteInput! ) {
+  updateCliente(cedula:$cedula,clienteInput:$clienteInput)
+   {
+   cliente{
+    cedula
+  }
+  }
+}
+`;
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-
+  
   constructor(private apollo: Apollo) { }
-  public GetCliente() {
+   
+  GetCliente() {
     return this.apollo.watchQuery<any>({
       query: Get_Cliente
+    });
+
+  }
+  ClienteById(id:number) {
+    return this.apollo.watchQuery<any>({
+      query: Cliente_ById,
+      variables:{
+        id:id
+      }
     });
 
   }
@@ -66,4 +99,15 @@ export class ClienteService {
       }
     })
   }
+  public UpdateCliente( cedula:String,clienteModule: ClienteModule) {
+    return  this.apollo.mutate({
+      mutation:Update_Cliente,
+      variables:{
+        cedula:cedula,
+        clienteInput: clienteModule
+        
+      }
+    })
+  }
 }
+

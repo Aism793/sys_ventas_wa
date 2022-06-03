@@ -30,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ClientesComponent,
     FormClienteComponent,
     ListClienteComponent,
+    
   ],
   imports: [
     CommonModule,

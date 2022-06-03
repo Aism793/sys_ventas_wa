@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
-import { Subscription } from 'rxjs';
+import { MensajesModule } from '@app/mensajes/mensajes.module';
 import { ClienteModule } from '../cliente/cliente.module';
 
 @Component({
@@ -11,19 +11,10 @@ import { ClienteModule } from '../cliente/cliente.module';
   templateUrl: './list-cliente.component.html',
   styleUrls: ['./list-cliente.component.css']
 })
-export class ListClienteComponent implements OnInit {
+export class ListClienteComponent implements OnInit{
 
-suscription: Subscription;
+
   clientes!: ClienteModule[];
-  /*= [
-    { id: 11, cedula: '1065',primerNombre:'Micheel',segundoNombre:'Tati',primerApellido:'Rojas',segundoApellido:'Hoyos',correo:'mi@gmail.com',
-  
-     telefono:'311', direccion:'mz 13',estado:'Activo'},
-     { id: 13, cedula: '5323',primerNombre:'Isma',segundoNombre:'Antonio',primerApellido:'Rodrigez',segundoApellido:'Hoyos',correo:'mi@gmail.com',
-  
-     telefono:'311', direccion:'mz 13',estado:'Activo'}
-  
-  ];*/
   displayedColumns: string[] = [
     'id',
     'cedula',
@@ -37,7 +28,7 @@ suscription: Subscription;
   dataSource = new MatTableDataSource<ClienteModule>(this.clientes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(private clienteService : ClienteService) {
+  constructor(private clienteService : ClienteService, private mensaje: MensajesModule) {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -48,22 +39,24 @@ suscription: Subscription;
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
-   this.ConsultarClientesidad();
-
+   this.ConsultarClientes();
   }
-  ConsultarClientesidad() {
+ 
+  ConsultarClientes() {
    this.clienteService.GetCliente().valueChanges.subscribe(t=>{
-    var result = t.data.allClientes
-    this.dataSource.data= result
+    this.dataSource.data= t.data.allClientes,
+    error => this.mensaje.mensajeAlertaError(error.error.toString())
    });
-    //this.dataSource.data     
   }
   Eliminar(cedula: string) {
     console.log ("Eliminado cliente con cedula: "+ cedula );
     this.clienteService.DisableCliente(cedula).subscribe(t=>{
-      this.ConsultarClientesidad();
       var result =t
+      this.mensaje.mensajeAlertaCorrecto("Cliente desahabilitado Correctamente")
+      this.ConsultarClientes(),
+      error => this.mensaje.mensajeAlertaError(error.error.toString())
     });
     
   }
+ 
 }

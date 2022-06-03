@@ -22,6 +22,8 @@ import { CoreModule } from './core/core.module';
 import { NgChartsModule } from 'ng2-charts';
 import { FeatureProductosModule } from './features/feature-productos/feature-productos.module';
 import { GraphQLModule } from './graphql.module';
+import { MensajesModule } from './mensajes/mensajes.module';
+
 
 
 
@@ -32,7 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    
+   
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FeatureClientesModule,
     FeatureFacturacionModule,
     HttpClientModule,
+    MensajesModule,
     NgChartsModule,
     TranslateModule.forRoot({
       loader: {

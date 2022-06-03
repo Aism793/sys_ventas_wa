@@ -59,6 +59,7 @@
         <th mat-header-cell *matHeaderCellDef>Opciones</th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button color="warn" (click)="Eliminar(element.cedula)"><mat-icon>delete_outline</mat-icon></button>
+          <button mat-icon-button color="warn" [routerLink]='["/a/clientes/editarCliente/"+element.id]'>Editar</button>
         </td>
       </ng-container>
   
