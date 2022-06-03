@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
 import { Subscription } from 'rxjs';
 import { ClienteModule } from '../cliente/cliente.module';
 
@@ -13,7 +14,8 @@ import { ClienteModule } from '../cliente/cliente.module';
 export class ListClienteComponent implements OnInit {
 
 suscription: Subscription;
-  clientes: ClienteModule[]= [
+  clientes!: ClienteModule[];
+  /*= [
     { id: 11, cedula: '1065',primerNombre:'Micheel',segundoNombre:'Tati',primerApellido:'Rojas',segundoApellido:'Hoyos',correo:'mi@gmail.com',
   
      telefono:'311', direccion:'mz 13',estado:'Activo'},
@@ -21,7 +23,7 @@ suscription: Subscription;
   
      telefono:'311', direccion:'mz 13',estado:'Activo'}
   
-  ];
+  ];*/
   displayedColumns: string[] = [
     'id',
     'cedula',
@@ -35,7 +37,7 @@ suscription: Subscription;
   dataSource = new MatTableDataSource<ClienteModule>(this.clientes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor() {
+  constructor(private clienteService : ClienteService) {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -50,10 +52,18 @@ suscription: Subscription;
 
   }
   ConsultarClientesidad() {
-   this.dataSource.data = this.clientes;
-        
+   this.clienteService.GetCliente().valueChanges.subscribe(t=>{
+    var result = t.data.allClientes
+    this.dataSource.data= result
+   });
+    //this.dataSource.data     
   }
-  Eliminar(id: number) {
-    console.log ("Eliminado cliente con id: "+ id );
+  Eliminar(cedula: string) {
+    console.log ("Eliminado cliente con cedula: "+ cedula );
+    this.clienteService.DisableCliente(cedula).subscribe(t=>{
+      this.ConsultarClientesidad();
+      var result =t
+    });
+    
   }
 }

@@ -10,14 +10,14 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class ClienteModule {
-  id!: number;
-  cedula!: string;
-  primerNombre!: string;
-  segundoNombre!: string;
-  primerApellido!: string;
-  segundoApellido!: string;
-  correo!: string;
-  telefono!: string;
-  direccion!: string;
-  estado!:string; 
+  id: number;
+  cedula: string;
+  primerNombre: string;
+  segundoNombre: string;
+  primerApellido: string;
+  segundoApellido: string;
+  correo: string;
+  telefono: string;
+  direccion: string;
+  estado:string; 
  }
