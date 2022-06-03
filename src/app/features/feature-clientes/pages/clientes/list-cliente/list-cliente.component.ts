@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
 import { MensajesModule } from '@app/mensajes/mensajes.module';
+import { Subscription } from 'rxjs';
 import { ClienteModule } from '../cliente/cliente.module';
 
 @Component({
@@ -14,7 +15,7 @@ import { ClienteModule } from '../cliente/cliente.module';
 })
 export class ListClienteComponent implements OnInit{
 
-
+  suscription: Subscription;
   clientes!: ClienteModule[];
   displayedColumns: string[] = [
     'id',
@@ -31,6 +32,7 @@ export class ListClienteComponent implements OnInit{
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(private clienteService : ClienteService, private mensaje: MensajesModule, private router: Router) {
   }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -42,10 +44,12 @@ export class ListClienteComponent implements OnInit{
   ngOnInit(): void {
    this.ConsultarClientes();
   }
- 
+  
   ConsultarClientes() {
    this.clienteService.GetCliente().valueChanges.subscribe(t=>{
-    this.dataSource.data= t.data.allClientes,
+    this.clientes =t.data.allClientes
+    this.dataSource.data= this.clientes
+    this.renderizarTabla(),
     error => this.mensaje.mensajeAlertaError(error.error.toString())
    });
   }
@@ -53,6 +57,7 @@ export class ListClienteComponent implements OnInit{
     console.log ("Eliminado cliente con cedula: "+ cedula );
     this.clienteService.DisableCliente(cedula).subscribe(t=>{
       var result =t;
+      this.ConsultarClientes()
       this.mensaje.mensajeAlertaCorrecto("Cliente desahabilitado Correctamente"),
       error => this.mensaje.mensajeAlertaError(error.error.toString())
     });
@@ -62,6 +67,11 @@ export class ListClienteComponent implements OnInit{
      var edit = "editar";
      this.router.navigate(  ["/a/clientes/editarCliente/"+edit+"/"+id]);
    }
+   private renderizarTabla() {
+    this.dataSource = new MatTableDataSource(this.clientes);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+}
   
  
 }

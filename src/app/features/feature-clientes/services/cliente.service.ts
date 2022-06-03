@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { gql, Apollo } from 'apollo-angular';
+import { Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ClienteModule } from '../pages/clientes/cliente/cliente.module';
 const Get_Cliente = gql`
 query{
@@ -66,10 +68,11 @@ mutation updateCliente($cedula:String!, $clienteInput:ClienteInput! ) {
 export class ClienteService {
   
   constructor(private apollo: Apollo) { }
-   
+ 
   GetCliente() {
     return this.apollo.watchQuery<any>({
-      query: Get_Cliente
+      query: Get_Cliente,
+      pollInterval: 500,
     });
 
   }
