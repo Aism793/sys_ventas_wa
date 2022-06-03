@@ -43,6 +43,7 @@ export class FormClienteComponent implements OnInit {
   else{
     console.table(cliente); 
     if (this.formGroup.valid) {
+      debugger
       this.clienteService.UpdateCliente(cliente.cedula,cliente).subscribe(t=>{
         var result = t
         this.mensaje.mensajeAlertaCorrecto("Cliente Actualizado Correctamente");

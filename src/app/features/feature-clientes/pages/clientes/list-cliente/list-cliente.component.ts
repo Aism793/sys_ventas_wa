@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
 import { MensajesModule } from '@app/mensajes/mensajes.module';
 import { ClienteModule } from '../cliente/cliente.module';
@@ -28,7 +29,7 @@ export class ListClienteComponent implements OnInit{
   dataSource = new MatTableDataSource<ClienteModule>(this.clientes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(private clienteService : ClienteService, private mensaje: MensajesModule) {
+  constructor(private clienteService : ClienteService, private mensaje: MensajesModule, private router: Router) {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -52,11 +53,14 @@ export class ListClienteComponent implements OnInit{
     console.log ("Eliminado cliente con cedula: "+ cedula );
     this.clienteService.DisableCliente(cedula).subscribe(t=>{
       var result =t
-      this.mensaje.mensajeAlertaCorrecto("Cliente desahabilitado Correctamente")
-      this.ConsultarClientes(),
+      this.mensaje.mensajeAlertaCorrecto("Cliente desahabilitado Correctamente"),
       error => this.mensaje.mensajeAlertaError(error.error.toString())
     });
     
   }
+   Editar(id:number){
+     this.router.navigate(  ["/a/clientes/editarCliente/"+id]);
+   }
+  
  
 }

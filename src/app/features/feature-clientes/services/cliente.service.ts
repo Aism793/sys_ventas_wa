@@ -21,11 +21,12 @@ query clienteById($id: Int!){
      id,
      cedula,
      primerNombre,
+     segundoNombre,
      primerApellido,
+     segundoApellido,
      correo,
      telefono,
-     direccion,
-     estado,
+     direccion
   }
 }
 `;
@@ -50,8 +51,8 @@ mutation disableCliente($cedula:String! ) {
 }
 `;
 const Update_Cliente = gql`
-mutation updateCliente($cedula:String!,$clienteInput:ClienteInput! ) {
-  updateCliente(cedula:$cedula,clienteInput:$clienteInput)
+mutation updateCliente($cedula:String!, $clienteInput:ClienteInput! ) {
+  updateCliente(cedula:$cedula,cliente:$clienteInput)
    {
    cliente{
     cedula
@@ -105,8 +106,9 @@ export class ClienteService {
       variables:{
         cedula:cedula,
         clienteInput: clienteModule
-        
+       
       }
+      
     })
   }
 }
