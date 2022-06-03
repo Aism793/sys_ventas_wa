@@ -18,10 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { InternationalizationModule } from '@app/internationalization.module';
+import { CategoryComponent } from './pages/categorys/category/category.component';
 
 @NgModule({
   declarations: [
-    FeatureProductosComponent
+    FeatureProductosComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,

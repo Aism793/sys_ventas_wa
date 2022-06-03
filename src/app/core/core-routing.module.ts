@@ -12,10 +12,11 @@ import { ProductosComponent } from '@app/features/feature-productos/pages/produc
 import { FacturacionComponent } from '@app/features/feature-facturacion/pages/facturacion/facturacion.component';
 import { FormClienteComponent } from '@app/features/feature-clientes/pages/clientes/form-cliente/form-cliente.component';
 import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
+import { CategoryComponent } from '@app/features/feature-productos/pages/categorys/category/category.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     component: NavBarComponent
   },
   {
@@ -30,6 +31,8 @@ const routes: Routes = [
         path: 'productos',
         children: [
           { path: 'productos', component: ProductosComponent, },
+          { path: 'categorias', component: CategoryComponent, },
+
          { path: '**', pathMatch: 'full', redirectTo: 'productos' },
         ],
       },

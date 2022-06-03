@@ -1,21 +1,44 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/"],
-      "@app/*" : ["src/app/*"],
-      "@core/*" : ["src/app/core/*"],
-      "@features/*" : ["src/app/features/*"],
-      "@features/terceros/*" : ["src/app/features/feature-terceros/*"],
-      "@features/orders/*" : ["src/app/features/feature-ordenes-compra/*"],
-      "@features/transversal/*" : ["src/app/features/feature-transversal-modules/*"],
-      "@features/inventory/*" : ["src/app/features/feature-inventario/*"],
-      "@inventory/parameters/*" : ["src/app/features/feature-inventario/pages/productos/*"],
-      "@shared/*" : ["src/app/shared/*"],
-      "@assets/*" : ["src/app/assets/*"],
-      "@environment/*" : ["src/environments/*"],
+      "@src/*": [
+        "src/"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@features/*": [
+        "src/app/features/*"
+      ],
+      "@features/terceros/*": [
+        "src/app/features/feature-terceros/*"
+      ],
+      "@features/orders/*": [
+        "src/app/features/feature-ordenes-compra/*"
+      ],
+      "@features/transversal/*": [
+        "src/app/features/feature-transversal-modules/*"
+      ],
+      "@features/inventory/*": [
+        "src/app/features/feature-inventario/*"
+      ],
+      "@inventory/parameters/*": [
+        "src/app/features/feature-inventario/pages/productos/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@assets/*": [
+        "src/app/assets/*"
+      ],
+      "@environment/*": [
+        "src/environments/*"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -32,8 +55,10 @@
     "module": "es2020",
     "lib": [
       "es2018",
-      "dom"
-    ]
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -21,6 +21,7 @@ import { FeatureFacturacionModule } from './features/feature-facturacion/feature
 import { CoreModule } from './core/core.module';
 import { NgChartsModule } from 'ng2-charts';
 import { FeatureProductosModule } from './features/feature-productos/feature-productos.module';
+import { GraphQLModule } from './graphql.module';
 
 
 
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    GraphQLModule,
   ],
   providers: [
     
