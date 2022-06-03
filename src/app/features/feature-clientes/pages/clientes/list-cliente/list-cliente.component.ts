@@ -52,14 +52,15 @@ export class ListClienteComponent implements OnInit{
   Eliminar(cedula: string) {
     console.log ("Eliminado cliente con cedula: "+ cedula );
     this.clienteService.DisableCliente(cedula).subscribe(t=>{
-      var result =t
+      var result =t;
       this.mensaje.mensajeAlertaCorrecto("Cliente desahabilitado Correctamente"),
       error => this.mensaje.mensajeAlertaError(error.error.toString())
     });
-    
+
   }
    Editar(id:number){
-     this.router.navigate(  ["/a/clientes/editarCliente/"+id]);
+     var edit = "editar";
+     this.router.navigate(  ["/a/clientes/editarCliente/"+edit+"/"+id]);
    }
   
  

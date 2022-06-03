@@ -42,7 +42,7 @@ const routes: Routes = [
           { path: 'clientes', component: ClientesComponent, },
           { path: 'crearCliente', component: FormClienteComponent, },
           { path: 'listarClientes', component: ListClienteComponent, },
-          { path: 'editarCliente/:id', component: FormClienteComponent, },
+          { path: 'editarCliente/:edit/:id', component: FormClienteComponent, },
         ]
       },
       {

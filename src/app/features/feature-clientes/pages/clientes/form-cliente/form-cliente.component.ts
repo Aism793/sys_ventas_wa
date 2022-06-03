@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
 import { MensajesModule } from '@app/mensajes/mensajes.module';
@@ -13,6 +13,7 @@ import { ClienteModule } from '../cliente/cliente.module';
 export class FormClienteComponent implements OnInit {
   modoEdicion: boolean = false;
   id:number;
+  edit: string = "";
   constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,private clienteService: ClienteService, private mensaje : MensajesModule ) { }
   formGroup = this.fb.group({
     cedula: ['', [Validators.required]],
@@ -61,6 +62,7 @@ export class FormClienteComponent implements OnInit {
       if (params["id"] == undefined) {
         return;
       }
+      this.edit = params.edit;
       this.modoEdicion = true;
       this.id = params["id"];
       this.clienteService.ClienteById(this.id).valueChanges.subscribe(t=>{
@@ -69,8 +71,10 @@ export class FormClienteComponent implements OnInit {
         error => this.mensaje.mensajeAlertaError(error.error.toString())
        });
     });
-    
+
   }
+
+
   cargarFormulario(cliente: ClienteModule) {
 
     this.formGroup.patchValue({
