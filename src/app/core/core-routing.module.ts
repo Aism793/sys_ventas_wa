@@ -13,6 +13,7 @@ import { FacturacionComponent } from '@app/features/feature-facturacion/pages/fa
 import { FormClienteComponent } from '@app/features/feature-clientes/pages/clientes/form-cliente/form-cliente.component';
 import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
 import { CategoryComponent } from '@app/features/feature-productos/pages/categorys/category/category.component';
+import { FormProductoComponent } from '@app/features/feature-productos/pages/productos/form-producto/form-producto.component';
 
 const routes: Routes = [
   {
@@ -32,8 +33,8 @@ const routes: Routes = [
         children: [
           { path: 'productos', component: ProductosComponent, },
           { path: 'categorias', component: CategoryComponent, },
-
-         { path: '**', pathMatch: 'full', redirectTo: 'productos' },
+          { path: 'crear-producto', component: FormProductoComponent, },
+          { path: '**', pathMatch: 'full', redirectTo: 'productos' },
         ],
       },
       {

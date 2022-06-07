@@ -1,0 +1,58 @@
+<div class="container">
+    <h1 style="text-align:center;" class="example-form">Formulario de productos </h1>
+    <form class="example-form" [formGroup]="formGroup" (ngSubmit)="save()">
+      <div style="text-align:center;">
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" #message maxlength="30" placeholder="Arroz" type="text">
+          <mat-hint align="start"><strong>Digite el nombre del producto</strong> </mat-hint>
+          <mat-hint align="end">{{nombre.value.length}} / 30</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="descripcion" #message maxlength="60" placeholder="Arroz Diana">
+          <mat-hint align="start"><strong>Digite una descripción para el producto</strong> </mat-hint>
+          <mat-hint align="end">{{descripcion.value.length}} / 60</mat-hint>
+        </mat-form-field>
+      </div>
+      
+      <div class="espacio">
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Unidad</mat-label>
+          <input matInput formControlName="unidad" #message maxlength="20" placeholder="Libra">
+          <mat-hint align="start"><strong>Digite la unidad del producto</strong> </mat-hint>
+          <mat-hint align="end">{{unidad.value.length}} / 20</mat-hint>
+         </mat-form-field>
+  
+         <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Cantidad</mat-label>
+          <input matInput formControlName="cantidad" #message maxlength="5" placeholder="20" type="number">
+          <mat-hint align="start"><strong>Digite la cantidad del producto</strong> </mat-hint>
+          <mat-hint align="end">{{cantidad.value.length}} / 5</mat-hint>
+         </mat-form-field>
+      </div>
+      
+      <div class="espacio">
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Precio</mat-label>
+          <input matInput formControlName="precio" #message maxlength="10" placeholder="2000" type="number">
+          <mat-hint align="start"><strong>Digite el precio del producto</strong> </mat-hint>
+          <mat-hint align="end">{{precio.value.length}} / 10</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Categoría</mat-label>
+          <input matInput type="text" formControlName="categoria" #message maxlength="30" placeholder="Canasta familiar">
+          <mat-hint align="start"><strong>Digite la categoría del producto</strong> </mat-hint>
+          <mat-hint align="end">{{categoria.value.length}} / 30</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="example-button-row" 
+        style="text-align:center; margin-top: 20px; margin-left: -200px;">
+        <button type="submit" mat-fab color="accent">Aceptar</button>
+      </div>
+    </form>
+  </div>
+

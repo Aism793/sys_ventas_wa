@@ -40,6 +40,13 @@
           <i id="icon" class="material-icons">settings</i>
           <span id="text" class="text"> Productos </span>
         </a>
+        <a
+          mat-list-item
+          [routerLink]="'/a/productos/crear-producto'"
+          [routerLinkActive]="['active']">
+          <i id="icon" class="material-icons">settings</i>
+          <span id="text" class="text"> Crear Producto </span>
+        </a>
       </div>
 
       <mat-list-item (click)="showSubmenuTerceros = !showSubmenuTerceros">

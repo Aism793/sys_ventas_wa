@@ -19,11 +19,13 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { InternationalizationModule } from '@app/internationalization.module';
 import { CategoryComponent } from './pages/categorys/category/category.component';
+import { FormProductoComponent } from './pages/productos/form-producto/form-producto.component';
 
 @NgModule({
   declarations: [
     FeatureProductosComponent,
-    CategoryComponent
+    CategoryComponent,
+    FormProductoComponent
   ],
   imports: [
     CommonModule,

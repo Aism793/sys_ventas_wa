@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  sysventas_wa:
+    build: .
+    image: aism793/sysventas_wa:1.0
+    restart: always
+    container_name: sysventas_wa
+    ports:
+      - 8008:80
