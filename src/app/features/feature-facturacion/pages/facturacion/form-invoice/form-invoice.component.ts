@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
 import { InvoiceModule } from '../invoice/invoice.module';
 
 @Component({
@@ -15,7 +17,9 @@ import { InvoiceModule } from '../invoice/invoice.module';
 export class FormInvoiceComponent implements OnInit {
   startDate = new Date(2022, 0, 1);
   Message :number;
-  constructor(private fb: FormBuilder,) { }
+  constructor(private fb: FormBuilder,
+    public matDialog: MatDialog,
+  ) { }
   formGroup = this.fb.group({
     date: ['', [Validators.required]],
    
@@ -32,5 +36,15 @@ export class FormInvoiceComponent implements OnInit {
   receiveMessage($event) {
     this.Message = $event
     console.log(this.Message);
+  }
+
+  openDialogClients() {
+    const dialogRef = this.matDialog.open(ListClienteComponent, {
+      data: {dialog: true}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result.data);
+    });
   }
 }
