@@ -15,11 +15,12 @@ import { ListClienteComponent } from '@app/features/feature-clientes/pages/clien
 import { CategoryComponent } from '@app/features/feature-productos/pages/categorys/category/category.component';
 import { FormProductoComponent } from '@app/features/feature-productos/pages/productos/form-producto/form-producto.component';
 import { FormInvoiceComponent } from '@app/features/feature-facturacion/pages/facturacion/form-invoice/form-invoice.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: NavBarComponent
+    component: LoginComponent
   },
   {
     path: 'a',
