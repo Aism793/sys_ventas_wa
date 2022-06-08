@@ -7,6 +7,18 @@
       <h1>Sysventas</h1>
       <span class="menu-spacer"></span>
     </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="avatar-letter">{{ initial }}</div>
+      <button class="name-margin" mat-button [matMenuTriggerFor]="menu">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <i id="icon" class="material-icons">logout</i>
+        </div>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onSignOut()"> Cerrar sesión </button>
+      </mat-menu>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 

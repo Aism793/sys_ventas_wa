@@ -6,6 +6,7 @@ import { delay } from 'rxjs/operators';
 
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatIconRegistry } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -58,6 +59,7 @@ export class NavBarComponent implements OnInit {
     private observer: BreakpointObserver,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
+    private router: Router,
   ) {
     this.iconRegistry();
   }
@@ -85,5 +87,9 @@ export class NavBarComponent implements OnInit {
         this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/'+ image +'.svg')
       );
     });
+  }
+
+  onSignOut(){
+    this.router.navigate(['']);
   }
 }

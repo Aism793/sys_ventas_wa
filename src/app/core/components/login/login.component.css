@@ -1,0 +1,79 @@
+.button-border {
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    border-color: #8DAFE2;
+    height: 50px;
+  }
+  
+  #content {
+    height: 100%;
+  }
+  
+  .div1 {
+    height: 100vh;
+    color: white;
+    background-image: url("../../../../assets/img/fondo_azul_claro_login.svg");
+    background-size: cover;
+  }
+  
+  .padding-div1 {
+    padding-top: 40px;
+    padding-left: 55px;
+  }
+  
+  .text-div1 {
+    font-weight: bold;
+    font-size: 5.6vw;
+    line-height: 110%;
+    padding-top: 100px;
+  }
+  
+  #div2 {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container-custom {
+    width: 70%;
+  }
+  
+  .color {
+    background-color: #F4B60B;
+    color: white;
+  }
+  
+  .color-2 {
+    color: #242865;
+  }
+  
+  .title {
+    font-weight: bold;
+    font-size: 47px;
+  }
+  
+  .sub-title {
+    color: gray;
+  }
+  
+  .form-check-input {
+    border-radius: 1em;
+    border-color: #8DAFE2;
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: 0;
+    margin-right: 0.5em;
+    background-image: none !important;
+    /* background-color: #8DAFE2; */
+  }
+  
+  .form-check-input:checked {
+    background-color: #8DAFE2;
+  }
+  
+  
+  .form-check-label {
+    color: gray;
+  }

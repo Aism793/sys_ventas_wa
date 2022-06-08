@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col" id="div2">
+        <div class="container-custom">
+          <div style="padding-bottom: 3rem;">
+            <h1 class="title">SYSVENTAS</h1>
+            <p class="sub-title">Facturación y ventas</p>
+          </div>
+          <form [formGroup]="formGroup" (ngSubmit)="onLogin()">
+            <div class="pb-3">
+              <label for="" class="form-label color-2">Usuario</label>
+              <input type="text" class="form-control button-border" formControlName="user" placeholder="sysventas" />
+            </div>
+            <div class="pb-3">
+              <label for="" class="form-label color-2">Contraseña</label>
+              <input type="password" class="form-control button-border" formControlName="password" placeholder="********"/>
+            </div>
+            <div class="pt-3">
+              <button mat-flat-button class="button-border color" fxFlex type="submit">
+                 Iniciar sesión
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
