@@ -14,6 +14,7 @@ import { FormClienteComponent } from '@app/features/feature-clientes/pages/clien
 import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
 import { CategoryComponent } from '@app/features/feature-productos/pages/categorys/category/category.component';
 import { FormProductoComponent } from '@app/features/feature-productos/pages/productos/form-producto/form-producto.component';
+import { FormInvoiceComponent } from '@app/features/feature-facturacion/pages/facturacion/form-invoice/form-invoice.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
         path: 'facturacion',
         children: [
           { path: 'facturacion', component: FacturacionComponent, },
+          { path: 'crearFactura', component: FormInvoiceComponent, },
           ]
       },
       {

@@ -60,6 +60,8 @@
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button color="warn" (click)="Eliminar(element.cedula)"><mat-icon>delete_outline</mat-icon></button>
           <button mat-icon-button color="warn" (click)="Editar(element.id)"><mat-icon>edit_black</mat-icon></button>
+          <button (click)="sendId(element.id)">Send Id</button>
+
         </td>
       </ng-container>
   

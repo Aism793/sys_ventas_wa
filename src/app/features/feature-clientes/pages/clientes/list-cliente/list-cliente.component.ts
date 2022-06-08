@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,11 +10,15 @@ import { ClienteModule } from '../cliente/cliente.module';
 
 @Component({
   selector: 'app-list-cliente',
-  templateUrl: './list-cliente.component.html',
+  template: `
+  <button (click)="sendId(message)">Send Id</button>
+`,
+templateUrl: './list-cliente.component.html',
   styleUrls: ['./list-cliente.component.css']
 })
 export class ListClienteComponent implements OnInit{
-
+  @Output() messageEvent = new EventEmitter<number>();
+  message: number;
   suscription: Subscription;
   clientes!: ClienteModule[];
   displayedColumns: string[] = [
@@ -67,6 +71,11 @@ export class ListClienteComponent implements OnInit{
      var edit = "editar";
      this.router.navigate(  ["/a/clientes/editarCliente/"+edit+"/"+id]);
    }
+   sendId(message: number) {
+     this.message=message;
+    this.messageEvent.emit(this.message);
+    console.log(message);
+  }
    private renderizarTabla() {
     this.dataSource = new MatTableDataSource(this.clientes);
     this.dataSource.paginator = this.paginator;

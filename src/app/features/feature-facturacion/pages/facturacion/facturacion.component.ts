@@ -13,8 +13,6 @@ export class FacturacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.invoiceService.getInvoices().subscribe(result => {
-      debugger;
-    })
+   
   }
 }

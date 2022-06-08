@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -23,9 +23,6 @@ import { NgChartsModule } from 'ng2-charts';
 import { FeatureProductosModule } from './features/feature-productos/feature-productos.module';
 import { GraphQLModule } from './graphql.module';
 import { MensajesModule } from './mensajes/mensajes.module';
-
-
-
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -61,5 +58,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     
   ],
   bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }

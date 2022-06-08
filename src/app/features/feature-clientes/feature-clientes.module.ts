@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -19,6 +19,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from '@app/core/core.module';
 import { FormClienteComponent } from './pages/clientes/form-cliente/form-cliente.component';
 import { ListClienteComponent } from './pages/clientes/list-cliente/list-cliente.component';
+import { FormInvoiceComponent } from '../feature-facturacion/pages/facturacion/form-invoice/form-invoice.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ClientesComponent,
     FormClienteComponent,
     ListClienteComponent,
+   
     
   ],
   imports: [
@@ -53,7 +55,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   ],
   exports: [
-    CoreModule
-  ]
+    CoreModule,
+    ListClienteComponent
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  
 })
 export class FeatureClientesModule { }

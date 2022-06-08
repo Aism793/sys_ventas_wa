@@ -20,6 +20,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { InternationalizationModule } from '@app/internationalization.module';
 import { CategoryComponent } from './pages/categorys/category/category.component';
 import { FormProductoComponent } from './pages/productos/form-producto/form-producto.component';
+import { ListClienteComponent } from '../feature-clientes/pages/clientes/list-cliente/list-cliente.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { FormProductoComponent } from './pages/productos/form-producto/form-prod
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     DatePipe
