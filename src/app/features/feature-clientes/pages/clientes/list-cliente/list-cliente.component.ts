@@ -11,15 +11,10 @@ import { ClienteModule } from '../cliente/cliente.module';
 
 @Component({
   selector: 'app-list-cliente',
-  template: `
-  <button (click)="sendId(message)">Send Id</button>
-`,
-templateUrl: './list-cliente.component.html',
+  templateUrl: './list-cliente.component.html',
   styleUrls: ['./list-cliente.component.css']
 })
 export class ListClienteComponent implements OnInit{
-  @Output() messageEvent = new EventEmitter<number>();
-  message: number;
   suscription: Subscription;
   clientes!: ClienteModule[];
   dialog: boolean = false;
@@ -86,9 +81,6 @@ export class ListClienteComponent implements OnInit{
      this.router.navigate(  ["/a/clientes/editarCliente/"+edit+"/"+id]);
    }
    sendId(clientId: number) {
-    //  this.message=message;
-    // this.messageEvent.emit(this.message);
-    // console.log(message);
     this.matDialogRef.close({ data: clientId });
   }
    private renderizarTabla() {

@@ -1,9 +1,8 @@
 .container-custom {
   height: 90vh;
   color: white;
-  background-image: url("../../../../assets/img/sysventas2.png");
   background-size: cover;
-  
+  background-image: url("../../../../assets/img/sysventas2.png");
   display: flex;
   justify-content: center;
   align-items: center;

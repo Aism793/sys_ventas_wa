@@ -13,11 +13,19 @@
             <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
         </mat-form-field>
       </div>
-    
+      <div class="espacio">
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Cliente</mat-label>
+          <input matInput formControlName="clienteId" #message maxlength="5" readonly>
+          <mat-hint align="start"><strong>Id del Cliente</strong> </mat-hint>
+          <mat-hint align="end">{{clienteId.value.length}} / 20</mat-hint>
+        </mat-form-field>
+        <button class="tamañoicon" mat-icon-button color="warn" (click)="openDialogClients()"><mat-icon>pageview</mat-icon></button>
+      </div>
 
       <div class="example-button-row" 
         style="text-align:center; margin-top: 20px; margin-left: -200px;">
-        <button type="submit" mat-fab color="accent" (click)="openDialogClients()">Aceptar</button>
+        <button type="submit" mat-fab color="accent" (click)="save()">Aceptar</button>
       </div>
     </form>
   </div>

@@ -39,3 +39,9 @@ table {
       right: 20px;
     }
   }
+  .example-button-row button,
+  .example-button-row a {
+    margin-top: 5px;
+    margin-left: 200px;
+    width: 100px
+  }
