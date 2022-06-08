@@ -9,11 +9,13 @@ import { HomeComponent } from './components/home/home.component';
 
 import { MaterialModule } from '@app/material.module';
 import { InternationalizationModule } from '@app/internationalization.module';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
