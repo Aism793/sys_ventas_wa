@@ -21,12 +21,14 @@ import { InternationalizationModule } from '@app/internationalization.module';
 import { CategoryComponent } from './pages/categorys/category/category.component';
 import { FormProductoComponent } from './pages/productos/form-producto/form-producto.component';
 import { ListClienteComponent } from '../feature-clientes/pages/clientes/list-cliente/list-cliente.component';
+import { ListProductoComponent } from './pages/productos/list-producto/list-producto.component';
 
 @NgModule({
   declarations: [
     FeatureProductosComponent,
     CategoryComponent,
-    FormProductoComponent
+    FormProductoComponent,
+    ListProductoComponent,
   ],
   imports: [
     CommonModule,

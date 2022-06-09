@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
 import { MensajesModule } from '@app/mensajes/mensajes.module';
-import { Subscription } from 'rxjs';
 import { ClienteModule } from '../cliente/cliente.module';
 
 @Component({
@@ -15,7 +14,6 @@ import { ClienteModule } from '../cliente/cliente.module';
   styleUrls: ['./list-cliente.component.css']
 })
 export class ListClienteComponent implements OnInit{
-  suscription: Subscription;
   clientes!: ClienteModule[];
   dialog: boolean = false;
   displayedColumns: string[] = [

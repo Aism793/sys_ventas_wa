@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { resultKeyNameFromField } from '@apollo/client/utilities';
 import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
+import { ListProductoComponent } from '@app/features/feature-productos/pages/productos/list-producto/list-producto.component';
 import { InvoiceModule } from '../invoice/invoice.module';
 
 @Component({
@@ -46,6 +47,16 @@ export class FormInvoiceComponent implements OnInit {
       this.formGroup.patchValue({
         clienteId: result.data
         });
+    });
+  
+  }
+  openDialogProductos() {
+    const dialogRef = this.matDialog.open(ListProductoComponent, {
+      data: {dialog: true}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+      console.log(result.data);
     });
   
   }
