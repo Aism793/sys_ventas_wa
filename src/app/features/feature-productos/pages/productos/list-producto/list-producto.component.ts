@@ -114,8 +114,14 @@ CantidadAComprar(producto:Product ) {
     allowOutsideClick: () => !Swal.isLoading()
   }).then((result) => {
     if (result.isConfirmed) {
-      this.productosEnviar.push({ productId: producto.id, quantity:Number(result.value.login), price: producto.precio, total:0 });
-      this.mensaje.mensajeAlertaCorrecto("Se ha añadido el producto:  "+producto.nombre+ " con una cantidad de:  "+ result.value.login+ " Correctamente")
+      if(result.value.login <=0){
+        this.mensaje.mensajeAlertaError("Error la catidad debe ser mayor a Cero (0)");
+      }
+      else{
+        this.productosEnviar.push({ productId: producto.id, quantity:Number(result.value.login), price: producto.precio });
+        this.mensaje.mensajeAlertaCorrecto("Se ha añadido el producto:  "+producto.nombre+ " con una cantidad de:  "+ result.value.login+ " Correctamente");
+      }
+      
     }
     
   })

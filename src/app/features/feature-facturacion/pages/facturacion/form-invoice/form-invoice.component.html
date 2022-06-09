@@ -6,10 +6,16 @@
      
       <div class="espacio">
         <mat-form-field flex appearance="outline" class="anchura">
-          <mat-label>Cliente</mat-label>
-          <input matInput formControlName="clienteId" #message maxlength="5" readonly>
-          <mat-hint align="start"><strong>Id del Cliente</strong> </mat-hint>
-          <mat-hint align="end">{{clienteId.value.length}} / 20</mat-hint>
+          <mat-label>Cedula del Cliente</mat-label>
+          <input matInput formControlName="clientId" #message maxlength="10" readonly>
+          <mat-hint align="start"><strong>Cedula del Cliente</strong> </mat-hint>
+          <mat-hint align="end">{{clientId.value.length}} / 10</mat-hint>
+        </mat-form-field>
+        <mat-form-field flex appearance="outline" class="anchura">
+          <mat-label>Nombre del Cliente</mat-label>
+          <input matInput formControlName="nombre" #message maxlength="40" readonly>
+          <mat-hint align="start"><strong>Nombre del Cliente</strong> </mat-hint>
+          <mat-hint align="end">{{nombre.value.length}} / 40</mat-hint>
         </mat-form-field>
         <button  mat-icon-button color="warn" (click)="openDialogClients()"><mat-icon>pageview</mat-icon></button>
       </div>

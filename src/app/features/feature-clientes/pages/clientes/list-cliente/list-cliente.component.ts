@@ -78,8 +78,8 @@ export class ListClienteComponent implements OnInit{
      var edit = "editar";
      this.router.navigate(  ["/a/clientes/editarCliente/"+edit+"/"+id]);
    }
-   sendId(clientId: number) {
-    this.matDialogRef.close({ data: clientId });
+   sendId(cliente: ClienteModule) {
+    this.matDialogRef.close({ data: cliente });
   }
    private renderizarTabla() {
     this.dataSource = new MatTableDataSource(this.clientes);
