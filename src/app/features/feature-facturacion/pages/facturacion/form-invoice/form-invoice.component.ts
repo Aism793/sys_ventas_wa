@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { resultKeyNameFromField } from '@apollo/client/utilities';
 import { ListClienteComponent } from '@app/features/feature-clientes/pages/clientes/list-cliente/list-cliente.component';
 import { ListProductoComponent } from '@app/features/feature-productos/pages/productos/list-producto/list-producto.component';
+import { InvoiceDetailModule } from '../invoice-detail/invoice-detail.module';
 import { InvoiceModule } from '../invoice/invoice.module';
 
 @Component({
@@ -13,27 +14,29 @@ import { InvoiceModule } from '../invoice/invoice.module';
 
 })
 export class FormInvoiceComponent implements OnInit {
-  startDate = new Date(2022, 0, 1);
   
+  date:Date;
+  productosAVender: InvoiceDetailModule[]=[];
   constructor(private fb: FormBuilder,
     public matDialog: MatDialog,
   ) { }
   formGroup = this.fb.group({
-    date: ['', [Validators.required]],
     clienteId: ['', [Validators.required]],
    
   });
   ngOnInit(): void {
   }
-  get date() {
-    return this.formGroup.get('date');
-  }
+  
   get clienteId() {
     return this.formGroup.get('clienteId');
   }
   save(){
+    this.date= new Date();
     let invoice: InvoiceModule = Object.assign({}, this.formGroup.value);
+    invoice.details= this.productosAVender;
+    invoice.date= this.date.toDateString();
     console.table(invoice);
+    
   }
  
 
@@ -43,7 +46,7 @@ export class FormInvoiceComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result.data);
+      if (!result) return;
       this.formGroup.patchValue({
         clienteId: result.data
         });
@@ -56,7 +59,10 @@ export class FormInvoiceComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
-      console.log(result.data);
+
+  result.data.forEach(element => {
+    this.productosAVender.push(element);
+  });
     });
   
   }

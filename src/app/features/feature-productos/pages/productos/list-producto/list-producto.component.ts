@@ -65,7 +65,7 @@ export class ListProductoComponent implements OnInit {
 
    selecionarProducto(producto: Product) {
     
-   this.mensajeAlertaCorrecto(producto);
+   this.CantidadAComprar(producto);
 
   
   }
@@ -87,7 +87,7 @@ export class ListProductoComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 }
-mensajeAlertaCorrecto(producto:Product ) {
+CantidadAComprar(producto:Product ) {
   Swal.fire({
     title: '¿Que cantidad de '+producto.nombre +' desea?',
     input: 'number',
@@ -115,6 +115,7 @@ mensajeAlertaCorrecto(producto:Product ) {
   }).then((result) => {
     if (result.isConfirmed) {
       this.productosEnviar.push({ productId: producto.id, quantity:Number(result.value.login), price: producto.precio, total:0 });
+      this.mensaje.mensajeAlertaCorrecto("Se ha añadido el producto:  "+producto.nombre+ " con una cantidad de:  "+ result.value.login+ " Correctamente")
     }
     
   })

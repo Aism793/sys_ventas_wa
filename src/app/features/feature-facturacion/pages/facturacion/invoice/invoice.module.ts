@@ -16,5 +16,5 @@ export class InvoiceModule {
   date: String;
   status: String;
   total: number;
-  details: [InvoiceDetailModule]
+  details: InvoiceDetailModule[]
 }
