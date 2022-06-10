@@ -17,6 +17,7 @@ import { FormProductoComponent } from '@app/features/feature-productos/pages/pro
 import { FormInvoiceComponent } from '@app/features/feature-facturacion/pages/facturacion/form-invoice/form-invoice.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListInvoiceComponent } from '@app/features/feature-facturacion/pages/facturacion/list-invoice/list-invoice.component';
+import { AuthGuard } from './components/login/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,9 @@ const routes: Routes = [
   {
     path: 'a',
     component: NavBarComponent,
+    canActivate:[AuthGuard],
+    canLoad:[AuthGuard],
+    data:{expectedRole:'Administrador'},
     children: [
       {
         path: 'home',

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {AuthService, Usuario} from './auth.service';
 
 
 @Component({
@@ -8,16 +9,18 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  
+export class LoginComponent implements OnInit, AfterViewInit {
+
   hide: Boolean = true;
   formGroup: FormGroup;
   isRememberMe: boolean = false;
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -34,23 +37,23 @@ export class LoginComponent implements OnInit {
       lang: new FormControl()
     });
   }
-  
-  get formLogin() { 
-    return this.formGroup.controls; 
+
+  get formLogin() {
+    return this.formGroup.controls;
   }
 
   onLogin(): void {
-    if(this.formGroup.invalid) return;
-    if(this.formGroup.value.user == "sysventas" && 
-      this.formGroup.value.password == "123"){
-        this.router.navigate(['a/home']);
-    }
+    if (this.formGroup.invalid) return;
+    const usuario: Usuario = {email: this.formGroup.value.user, password: this.formGroup.value.password}
+    this.authService.login(usuario).subscribe(response => {
+      this.router.navigate(['a/home']);
+    },error => alert(error.Message));
   }
 
   private validateSession(): void {
-    //const token: string = this.storageService.getCurrentToken();
-    // if (!token) return;
-    // this.router.navigate(['a/home']);
+    if (this.authService.getToken() == null || this.authService.getToken() === '') {
+      this.router.navigate(['']);
+    }
   }
 }
 
