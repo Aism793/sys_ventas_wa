@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ClienteService } from '@app/features/feature-clientes/services/cliente.service';
-import { MensajesModule } from '@app/mensajes/mensajes.module';
-import { ClienteModule } from '../cliente/cliente.module';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ClienteService} from '@app/features/feature-clientes/services/cliente.service';
+import {MensajesModule} from '@app/mensajes/mensajes.module';
+import {ClienteModule} from '../cliente/cliente.module';
 
 @Component({
   selector: 'app-form-cliente',
@@ -27,11 +27,14 @@ export class FormClienteComponent implements OnInit {
   });
   save() {
     let cliente: ClienteModule = Object.assign({}, this.formGroup.value);
-    console.table(cliente); 
     if (!this.modoEdicion) {
     if (this.formGroup.valid) {
       this.clienteService.PostCliente(cliente).subscribe(t=>{
-        var result =t
+        let createCliente = t.data["createCliente"];
+        if(!createCliente["cliente"]){
+          this.mensaje.mensajeAlertaError(createCliente["message"]);
+          return;
+        }
         this.mensaje.mensajeAlertaCorrecto("Cliente Guardado Correctamente")
         this.LimpiarFormulario(),
         error => this.mensaje.mensajeAlertaError( error.error.toString())
@@ -42,7 +45,7 @@ export class FormClienteComponent implements OnInit {
     console.log("Guardando...");
   }
   else{
-    console.table(cliente); 
+    console.table(cliente);
     if (this.formGroup.valid) {
       this.clienteService.UpdateCliente(cliente.cedula,cliente).subscribe(t=>{
         var result = t
@@ -50,7 +53,7 @@ export class FormClienteComponent implements OnInit {
         this.LimpiarFormulario(),
         error => this.mensaje.mensajeAlertaError( error.error.toString())
 
-      })  
+      })
     } else {
       this.mensaje.mensajeAlertaError('Registro no valido');
     }
@@ -87,7 +90,7 @@ export class FormClienteComponent implements OnInit {
      telefono:cliente.telefono,
      direccion:cliente.direccion,
     });
-   
+
   }
   LimpiarFormulario() {
     this.formGroup.patchValue({

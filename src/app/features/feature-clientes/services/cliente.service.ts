@@ -38,7 +38,9 @@ mutation createCliente($clienteInput:ClienteInput! ) {
    {
    cliente{
     cedula
-  }
+  },
+  message,
+  error
   }
 }
 `;
@@ -66,9 +68,9 @@ mutation updateCliente($cedula:String!, $clienteInput:ClienteInput! ) {
   providedIn: 'root'
 })
 export class ClienteService {
-  
+
   constructor(private apollo: Apollo) { }
- 
+
   GetCliente() {
     return this.apollo.watchQuery<any>({
       query: Get_Cliente,
@@ -90,7 +92,7 @@ export class ClienteService {
       mutation:Post_Cliente,
       variables:{
         clienteInput: clienteModule
-        
+
       }
     })
   }
@@ -99,7 +101,7 @@ export class ClienteService {
       mutation:Disable_Cliente,
       variables:{
         cedula: cedula
-        
+
       }
     })
   }
@@ -109,9 +111,9 @@ export class ClienteService {
       variables:{
         cedula:cedula,
         clienteInput: clienteModule
-       
+
       }
-      
+
     })
   }
 }
