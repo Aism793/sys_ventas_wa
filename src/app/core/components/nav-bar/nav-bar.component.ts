@@ -7,6 +7,7 @@ import { delay } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  
+
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   displayName: string;
   initial: string;
@@ -32,7 +33,7 @@ export class NavBarComponent implements OnInit {
 
   showFiller: Boolean = false;
   public activeLang: string = 'en';
- 
+
   mode = 'side';
   open = 'true';
   title = 'Responsive Sidenav Starter';
@@ -50,7 +51,7 @@ export class NavBarComponent implements OnInit {
   isExpandedPurchase = true;
   showSubmenuPurchase: boolean = false;
   isShowingPurchase = false;
-  
+
   isExpandedTransversal = true;
   showSubmenuTransversal: boolean = false;
   isShowingTransversal = false;
@@ -60,6 +61,7 @@ export class NavBarComponent implements OnInit {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private router: Router,
+    private authService:AuthService
   ) {
     this.iconRegistry();
   }
@@ -90,6 +92,6 @@ export class NavBarComponent implements OnInit {
   }
 
   onSignOut(){
-    this.router.navigate(['']);
+    this.authService.logout();
   }
 }
