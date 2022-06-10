@@ -14,11 +14,13 @@ import { FacturacionComponent } from './pages/facturacion/facturacion.component'
 import { NgChartsModule } from 'ng2-charts';
 import { FormInvoiceComponent } from './pages/facturacion/form-invoice/form-invoice.component';
 import { ListClienteComponent } from '../feature-clientes/pages/clientes/list-cliente/list-cliente.component';
+import { ListInvoiceComponent } from './pages/facturacion/list-invoice/list-invoice.component';
 
 @NgModule({
   declarations: [
     FacturacionComponent,
     FormInvoiceComponent,
+    ListInvoiceComponent,
   
   ],
   imports: [
