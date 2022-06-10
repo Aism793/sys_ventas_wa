@@ -72,7 +72,7 @@ export class ClienteService {
   GetCliente() {
     return this.apollo.watchQuery<any>({
       query: Get_Cliente,
-     // pollInterval: 500,
+      pollInterval: 500,
     });
 
   }
