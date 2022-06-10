@@ -59,6 +59,13 @@
           <i id="icon" class="material-icons">settings</i>
           <span id="text" class="text"> Crear Producto </span>
         </a>
+        <a
+          mat-list-item
+          [routerLink]="'/a/productos/listar-productos'"
+          [routerLinkActive]="['active']">
+          <i id="icon" class="material-icons">settings</i>
+          <span id="text" class="text"> Listar Productos </span>
+        </a>
       </div>
 
       <mat-list-item (click)="showSubmenuTerceros = !showSubmenuTerceros">
@@ -99,7 +106,7 @@
       [routerLink]="'/a/clientes/listarClientes'"
       [routerLinkActive]="['active']">
       <i id="icon" class="material-icons">settings</i>
-      <span id="text" class="text"> Listar Cliente </span>
+      <span id="text" class="text"> Listar Clientes </span>
       </a> 
       </div>
 

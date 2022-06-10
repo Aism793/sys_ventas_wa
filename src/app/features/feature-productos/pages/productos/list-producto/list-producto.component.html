@@ -1,4 +1,4 @@
-<h1 style="text-align:center;" class="example-form"> Busque y Selecione los productos a facturar</h1>
+<h1 style="text-align:center;" class="example-form"> Consultar productos </h1>
 <div class="table-responsive">
     <mat-form-field>
       <mat-label>Buscar</mat-label>
@@ -30,9 +30,11 @@
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Opciones</th>
         <td mat-cell *matCellDef="let element">
+          <button *ngIf="dialog == false" mat-icon-button color="warn" (click)="Eliminar(element.cedula)"><mat-icon>delete_outline</mat-icon></button>
+          <button *ngIf="dialog == false" mat-icon-button color="warn" (click)="Editar(element.id)"><mat-icon>edit_black</mat-icon></button>
           <div class="example-button-row" 
           style="text-align:center; margin-top: 5px; margin-left: -200px;">
-          <button  mat-fab color="accent" (click)="selecionarProducto(element)">Seleccionar</button>
+          <button *ngIf="dialog == true" mat-fab color="accent" (click)="selecionarProducto(element)">Seleccionar</button>
         </div>
         </td>
       </ng-container>
