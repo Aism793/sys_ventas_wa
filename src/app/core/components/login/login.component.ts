@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {AuthService, Usuario} from './auth.service';
+import {MensajesModule} from "@app/mensajes/mensajes.module";
 
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private mensaje : MensajesModule
   ) {
   }
 
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const usuario: Usuario = {email: this.formGroup.value.user, password: this.formGroup.value.password}
     this.authService.login(usuario).subscribe(response => {
       this.router.navigate(['a/home']);
-    },error => alert(error.Message));
+    },error => this.mensaje.mensajeAlertaError(error.Message));
   }
 
   private validateSession(): void {
