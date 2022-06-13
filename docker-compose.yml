@@ -7,4 +7,4 @@ services:
     restart: always
     container_name: sysventas_wa
     ports:
-      - 8008:80
+      - 4200:80
